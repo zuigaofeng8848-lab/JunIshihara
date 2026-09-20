@@ -1,1 +1,185 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>パリティビット体験学習</title>
+  <link rel="stylesheet" href="style.css">
+</head>
 
+<body>
+
+  <header>
+    <h1>🔢 パリティビット体験学習</h1>
+    <p>「7桁の0/1」を伝えて、通信エラーを見つけよう！</p>
+  </header>
+
+  <main>
+
+    <!-- 学習説明 -->
+    <section class="card explanation">
+      <h2>📖 パリティビットとは？</h2>
+      <p>
+        パリティビットは、データが正しく伝わったかを確認するために
+        追加する「0または1」のビットです。
+      </p>
+
+      <div class="rule">
+        <strong>このアプリでは「偶数パリティ」を使います。</strong>
+        <br>
+        8桁すべてを合わせたとき、
+        <span>「1」の数が偶数</span>になるようにします。
+      </div>
+    </section>
+
+    <!-- 送信者 -->
+    <section class="card">
+      <div class="section-title sender-title">
+        <span class="number">1</span>
+        <div>
+          <h2>送信者</h2>
+          <p>7桁の0 / 1を入力してください</p>
+        </div>
+      </div>
+
+      <div class="input-area">
+        <label for="dataInput">7桁のデータ</label>
+
+        <input
+          type="text"
+          id="dataInput"
+          maxlength="7"
+          inputmode="numeric"
+          placeholder="例：1011010"
+          autocomplete="off"
+        >
+
+        <button id="parityButton">
+          パリティビットを計算
+        </button>
+
+        <p id="inputMessage" class="message"></p>
+      </div>
+
+      <div id="senderResult" class="result hidden">
+
+        <h3>送信するデータ</h3>
+
+        <div class="bit-display">
+          <div class="data-bits" id="dataBits"></div>
+
+          <div class="plus">＋</div>
+
+          <div class="parity-box">
+            <span class="bit-label">パリティ</span>
+            <strong id="parityBit"></strong>
+          </div>
+        </div>
+
+        <div class="count-info">
+          <p>
+            元のデータの「1」の数：
+            <strong id="oneCount"></strong> 個
+          </p>
+
+          <p id="parityExplanation"></p>
+        </div>
+
+        <div class="send-message">
+          📢 <strong>この8桁の数字を相手に口頭で伝えてください。</strong>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 受信者 -->
+    <section class="card">
+      <div class="section-title receiver-title">
+        <span class="number">2</span>
+        <div>
+          <h2>受信者</h2>
+          <p>相手から聞いた8桁の数字を入力してください</p>
+        </div>
+      </div>
+
+      <div class="input-area">
+        <label for="receivedInput">受け取った8桁のデータ</label>
+
+        <input
+          type="text"
+          id="receivedInput"
+          maxlength="8"
+          inputmode="numeric"
+          placeholder="例：10110100"
+          autocomplete="off"
+        >
+
+        <button id="checkButton">
+          🔍 正しく伝わったかチェック
+        </button>
+
+        <p id="receiveMessage" class="message"></p>
+      </div>
+
+      <!-- 判定結果 -->
+      <div id="checkResult" class="check-result hidden">
+
+        <div id="resultIcon" class="result-icon"></div>
+
+        <h3 id="resultTitle"></h3>
+
+        <div class="received-bits" id="receivedBits"></div>
+
+        <div class="count-card">
+          <span>「1」の数</span>
+          <strong id="receivedOneCount"></strong>
+          <span>個</span>
+        </div>
+
+        <p id="resultDescription"></p>
+
+      </div>
+    </section>
+
+    <!-- 練習 -->
+    <section class="card practice">
+      <h2>🎯 体験してみよう</h2>
+
+      <div class="practice-grid">
+
+        <div>
+          <span class="practice-number">①</span>
+          送信者は7桁の0/1を決める
+        </div>
+
+        <div>
+          <span class="practice-number">②</span>
+          パリティビットを付ける
+        </div>
+
+        <div>
+          <span class="practice-number">③</span>
+          相手に8桁を口頭で伝える
+        </div>
+
+        <div>
+          <span class="practice-number">④</span>
+          受信者が「1」の数を数える
+        </div>
+
+      </div>
+
+      <button id="resetButton" class="reset-button">
+        🔄 もう一度やってみる
+      </button>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>パリティビット体験学習 ｜ 情報通信の基礎</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
